@@ -3,7 +3,7 @@
 export const Dashboard = () => {
   return (
     <div id="webcrumbs"> 
-            	<div className='w-[1200px] min-h-[800px] bg-white shadow-lg rounded-lg p-8'>
+            	<div className=' min-h-[800px] bg-white shadow-lg rounded-lg p-8'>
     	  <header className='mb-8'>
     	    <nav className='flex items-center justify-between'>
     	      <div className='flex items-center space-x-6'>
