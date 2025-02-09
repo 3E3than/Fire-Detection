@@ -1,4 +1,5 @@
 
+import FireMap from "../components/FireMap"
 
 export const Dashboard = () => {
   return (
@@ -28,29 +29,7 @@ export const Dashboard = () => {
     	    </nav>
     	  </header>
     	
-    	  <div className='grid grid-cols-3 gap-8'>
-    	    <div className='col-span-2 space-y-8'>
-    	      <div className='bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow overflow-hidden'>
-    	        <div className='p-4 border-b border-gray-200 flex items-center justify-between'>
-    	          <h2 className='text-xl font-semibold'>Live Fire Map</h2>
-    	          <div className='flex items-center space-x-2'>
-    	            <button className='p-2 hover:bg-gray-100 rounded-lg transition-colors'>
-    	              <span className='material-symbols-outlined'>zoom_in</span>
-    	            </button>
-    	            <button className='p-2 hover:bg-gray-100 rounded-lg transition-colors'>
-    	              <span className='material-symbols-outlined'>zoom_out</span>
-    	            </button>
-    	            <button className='p-2 hover:bg-gray-100 rounded-lg transition-colors'>
-    	              <span className='material-symbols-outlined'>my_location</span>
-    	            </button>
-    	          </div>
-    	        </div>
-    	        <div className='h-[400px] bg-gray-100 relative'>
-    	          <div className='absolute inset-0 p-4 flex items-center justify-center'>
-    	            <span className='material-symbols-outlined text-6xl text-gray-400'>map</span>
-    	          </div>
-    	        </div>
-    	      </div>
+    	  <FireMap ></FireMap>
     	
     	      <div className='grid grid-cols-2 gap-6'>
     	        <div className='bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow'>
@@ -169,8 +148,7 @@ export const Dashboard = () => {
     	      </div>
     	    </div>
     	  </div>
-    	</div> 
-            </div>
+    	
   )
 }
 
