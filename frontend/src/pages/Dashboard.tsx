@@ -15,12 +15,9 @@ export const Dashboard = () => {
     	           
     	          </div>
     	        </div>
-    	        
-    	  <FireMap ></FireMap>
-    	          <div className='absolute inset-0 p-4 flex items-center justify-center'>
-    	            <span className='material-symbols-outlined text-6xl text-gray-400'>map</span>
-    	       
-    	        </div>
+				<FireMap ></FireMap>
+    	 
+    	     
     	      </div>
     	
     	
