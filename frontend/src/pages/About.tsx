@@ -3,7 +3,7 @@
 export const About = () => {
   return (
     <div id="webcrumbs"> 
-            	<div className="w-[1200px] bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl overflow-hidden">
+            	<div className="w-full bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl overflow-hidden">
     	    <div className="text-center py-12 px-6 mb-12">
     	        <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">Why Wildfire Detection Matters</h2>
     	        <p className="text-lg max-w-3xl mx-auto">Wildfires cause massive destruction to the environment, wildlife, and human lives. Early detection using AI and IoT can help prevent disasters and save lives.</p>

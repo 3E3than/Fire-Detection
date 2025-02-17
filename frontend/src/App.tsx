@@ -3,7 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Dashboard } from "./pages/Dashboard";
 import { Alert } from "./pages/Alert";
 import {ReportFire} from "./pages/ReportFire";
-import About from "./pages/About";
+import {About} from "./pages/About";
 import {Home} from "./pages/Home";
 function App() {
   return (
