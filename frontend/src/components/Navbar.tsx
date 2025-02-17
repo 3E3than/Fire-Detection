@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 export const Navbar = () => {
   return (
     <header className="mb-8">
@@ -13,16 +13,16 @@ export const Navbar = () => {
               IgnisAI
             </h1>
          
-          <div className="relative px-7">
-          <input
-            type="text"
-            placeholder="Search location..."
-            className="w-64 px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
-          <span className="material-symbols-outlined absolute right-3 top-2.5 text-gray-400 cursor-pointer hover:text-orange-500 transition-colors">
-            search
-          </span>
-          </div>
+        <div className="relative">
+            <input
+                type="text"
+                placeholder="Search location..."
+                className="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200 ease-in-out"
+            />
+            <span className="material-symbols-outlined absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer hover:text-orange-500 transition duration-200 ease-in-out">
+                search
+            </span>
+        </div>
         </div>
         <div className="flex items-center gap-6">
           <NavLink

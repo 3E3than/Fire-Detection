@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import FireGlobe from "../components/FireGlobe"; // Import the FireGlobe component
 
 export const Home = () => {
@@ -38,7 +38,7 @@ export const Home = () => {
         <main className="p-12">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             {/* Left Section: Text Content and Buttons */}
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 space-y-6 mb-48">
               <h2 className="text-5xl font-bold leading-tight">
                 Real-Time Wildfire Detection & Monitoring
               </h2>
@@ -58,7 +58,22 @@ export const Home = () => {
                   </button>
                 </Link>
               </div>
-              <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow mt-8">
+              
+            </div>
+
+            {/* Right Section: Globe and Features Grid */}
+            <div className="flex-1 w-full pb-72">
+              {/* Globe Container */}
+              <div className="w-full h-[500px] lg:h-[600px]">
+                <FireGlobe fireData={fireData} />
+              </div>
+
+              {/* Features Grid */}
+            
+            </div>
+          </div>
+        </main>
+        <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow ">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
                     <span className="material-symbols-outlined text-orange-500 text-3xl">
@@ -92,20 +107,6 @@ export const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Right Section: Globe and Features Grid */}
-            <div className="flex-1 w-full pb-72">
-              {/* Globe Container */}
-              <div className="w-full h-[500px] lg:h-[600px]">
-                <FireGlobe fireData={fireData} />
-              </div>
-
-              {/* Features Grid */}
-            
-            </div>
-          </div>
-        </main>
       </div>
     </div>
   );
