@@ -36,8 +36,9 @@ export const Home = () => {
     <div id="webcrumbs">
       <div className="w-full bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl overflow-hidden">
         <main className="p-12">
-          <div className="flex gap-6 items-center">
-            <div className="flex-1 space-y-6 pb-96 ">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            {/* Left Section: Text Content and Buttons */}
+            <div className="flex-1 space-y-6">
               <h2 className="text-5xl font-bold leading-tight">
                 Real-Time Wildfire Detection & Monitoring
               </h2>
@@ -57,14 +58,6 @@ export const Home = () => {
                   </button>
                 </Link>
               </div>
-            </div>
-
-            <div className="flex-1">
-              {/* Replace the 2D map with the FireGlobe component */}
-              <div className=" ml-40 w-full h-full ">
-                <FireGlobe fireData={fireData} />
-              </div>
-
               <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow mt-8">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
@@ -99,6 +92,17 @@ export const Home = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Right Section: Globe and Features Grid */}
+            <div className="flex-1 w-full pb-72">
+              {/* Globe Container */}
+              <div className="w-full h-[500px] lg:h-[600px]">
+                <FireGlobe fireData={fireData} />
+              </div>
+
+              {/* Features Grid */}
+            
             </div>
           </div>
         </main>

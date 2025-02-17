@@ -17,8 +17,8 @@ const FireGlobe: React.FC<FireGlobeProps> = ({ fireData }) => {
     <Globe
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       pointsData={fireData}
-      pointColor="color"
-      pointRadius="size"
+      pointColor={(d) => (d as FireDataItem).color || 'red'} // Use 'red' as fallback
+      pointRadius={(d) => (d as FireDataItem).size || 0.9}   // Use 0.1 as fallback
       pointAltitude={0.01}
       pointResolution={32}
       pointLabel={(d) => `Fire at ${(d as FireDataItem).lat}, ${(d as FireDataItem).lng}`}
