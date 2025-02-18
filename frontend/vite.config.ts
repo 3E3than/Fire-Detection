@@ -4,4 +4,11 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
+  server: {
+    proxy: {
+      '/auth/social': 'http://localhost:8000',
+    },
+  },
 })
+
+
