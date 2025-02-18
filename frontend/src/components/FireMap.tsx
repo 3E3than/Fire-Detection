@@ -1,52 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import axios from "axios";
+import { baseurl } from "../lib/baseurl"; // Import the baseurl
 
 // Define TypeScript interface for wildfire data
 interface Wildfire {
   id: number;
-  lat: number;
-  lng: number;
-  intensity: "Moderate" | "High" | "Severe";
   location: string;
+  latitude: number;
+  longitude: number;
+  radius: number;
+  status: "Ongoing" | "Inactive"; // status can be Ongoing or Inactive
 }
 
-// Sample wildfire locations
-const wildfireLocations: Wildfire[] = [
-  { id: 1, lat: 34.0522, lng: -118.2437, intensity: "High", location: "Los Angeles, CA" },
-  { id: 2, lat: 40.7128, lng: -74.006, intensity: "Moderate", location: "New York, NY" },
-  { id: 3, lat: 37.7749, lng: -122.4194, intensity: "Severe", location: "San Francisco, CA" },
-];
-
-// Function to determine radius based on intensity
-const getRadius = (intensity: Wildfire["intensity"]): number => {
-  switch (intensity) {
-    case "Severe":
-      return 50000; // 50 km for severe fires
-    case "High":
-      return 30000; // 30 km for high risk
-    case "Moderate":
-      return 15000; // 15 km for moderate risk
+// Function to determine color based on status
+const getColor = (status: Wildfire["status"]): string => {
+  switch (status) {
+    case "Ongoing":
+      return "red"; // Red for ongoing wildfires
+    case "Inactive":
+      return "gray"; // Gray for inactive wildfires
     default:
-      return 10000;
-  }
-};
-
-// Function to determine color based on intensity
-const getColor = (intensity: Wildfire["intensity"]): string => {
-  switch (intensity) {
-    case "Severe":
-      return "darkred";
-    case "High":
-      return "red";
-    case "Moderate":
-      return "orange";
-    default:
-      return "gray";
+      return "blue"; // Default to blue if something unexpected occurs
   }
 };
 
 const FireMap: React.FC = () => {
+  const [wildfireLocations, setWildfireLocations] = useState<Wildfire[]>([]);
+
+  // Fetch wildfire data from API using axios
+  useEffect(() => {
+    const fetchWildfireData = async () => {
+      try {
+        const response = await axios.get(`${baseurl}/api/wildfire`);
+        setWildfireLocations(response.data); // Set the wildfire data in state
+      } catch (error) {
+        console.error("Error fetching wildfire data", error);
+      }
+    };
+
+    fetchWildfireData();
+  }, []); // Empty dependency array to fetch data once on component mount
+
   return (
     <MapContainer
       style={{ height: "500px", width: "100%" }}
@@ -61,16 +57,16 @@ const FireMap: React.FC = () => {
       {wildfireLocations.map((fire) => (
         <Circle
           key={fire.id}
-          center={[fire.lat, fire.lng]}
-          radius={getRadius(fire.intensity)} // Dynamic radius in meters
-          color={getColor(fire.intensity)}
-          fillColor={getColor(fire.intensity)}
+          center={[fire.latitude, fire.longitude]} // Use latitude and longitude from API
+          radius={fire.radius} // Use radius from API (in meters)
+          color={getColor(fire.status)} // Dynamic color based on status
+          fillColor={getColor(fire.status)}
           fillOpacity={0.5}
         >
           <Popup>
             <strong>🔥 Wildfire Alert</strong> <br />
             <b>Location:</b> {fire.location} <br />
-            <b>Intensity:</b> {fire.intensity}
+            <b>Status:</b> {fire.status}
           </Popup>
         </Circle>
       ))}

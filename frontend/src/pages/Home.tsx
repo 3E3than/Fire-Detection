@@ -1,35 +1,61 @@
 import { Link } from "react-router-dom";
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import axios from "axios";
 import FireGlobe from "../components/FireGlobe"; // Import the FireGlobe component
+import { baseurl } from "../lib/baseurl"; // Assuming this is the base URL for your API
 
 export const Home = () => {
-  const [fireData, setFireData] = useState<{ lat: number; lng: number }[]>([]);
+  const [fireData, setFireData] = useState<{
+    lat: number;
+    lng: number;
+    status: string;
+    size: number; // Size is in km (1 unit = 1 km)
+    color: string;
+  }[]>([]);
 
   useEffect(() => {
-    // Mock data for fire locations (replace with real API call)
-    const mockFireData = [
-      { lat: 37.7749, lng: -122.4194 }, // San Francisco
-      { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-      { lat: 40.7128, lng: -74.006 },  // New York
-      { lat: 51.5074, lng: -0.1278 },  // London
-      { lat: 48.8566, lng: 2.3522 },   // Paris
-      { lat: 35.6895, lng: 139.6917 }, // Tokyo
-    ];
-    setFireData(mockFireData);
+    // Fetch data from the backend using axios
+    const fetchFireData = async () => {
+      try {
+        const response = await axios.get(`${baseurl}/api/wildfire`);
+        const formattedData = response.data.map((fire: {
+          latitude: number;
+          longitude: number;
+          radius: number; // radius in meters
+          status: string;
+        }) => {
+          // Convert radius from meters to kilometers
+          const size = fire.radius / 10000; // Convert radius to kilometers
 
-    // If using a real API:
-    /*
-    fetch('https://firms.modaps.eosdis.nasa.gov/api/area/csv/...')
-      .then(response => response.json())
-      .then(data => {
-        const formattedData = data.map(fire => ({
-          lat: fire.latitude,
-          lng: fire.longitude,
-        }));
-        setFireData(formattedData);
-      })
-      .catch(error => console.error('Error fetching fire data:', error));
-    */
+          // Determine color based on the fire status
+          let color = "gray"; // Default color
+          switch (fire.status) {
+            case "Ongoing":
+              color = "red"; // Red for ongoing fires
+              break;
+            case "Inactive":
+              color = "gray"; // Orange for inactive fires
+              break;
+            default:
+              color = "blue"; // Gray for unknown status
+              break;
+          }
+
+          return {
+            lat: fire.latitude,
+            lng: fire.longitude,
+            status: fire.status,
+            size, // size in km
+            color,
+          };
+        });
+        setFireData(formattedData); // Set the formatted data into the state
+      } catch (error) {
+        console.error("Error fetching wildfire data:", error);
+      }
+    };
+
+    fetchFireData(); // Fetch data when the component mounts
   }, []);
 
   return (
@@ -58,7 +84,6 @@ export const Home = () => {
                   </button>
                 </Link>
               </div>
-              
             </div>
 
             {/* Right Section: Globe and Features Grid */}
@@ -69,44 +94,33 @@ export const Home = () => {
               </div>
 
               {/* Features Grid */}
-            
             </div>
           </div>
         </main>
         <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow ">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-                    <span className="material-symbols-outlined text-orange-500 text-3xl">
-                      dashboard
-                    </span>
-                    <h3 className="font-semibold mt-2">Live Dashboard</h3>
-                    <p className="text-sm">
-                      Comprehensive view of active wildfires
-                    </p>
-                  </div>
-                  <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-                    <span className="material-symbols-outlined text-orange-500 text-3xl">
-                      warning
-                    </span>
-                    <h3 className="font-semibold mt-2">Instant Alerts</h3>
-                    <p className="text-sm">Real-time notifications</p>
-                  </div>
-                  <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-                    <span className="material-symbols-outlined text-orange-500 text-3xl">
-                      psychology
-                    </span>
-                    <h3 className="font-semibold mt-2">AI Predictions</h3>
-                    <p className="text-sm">Machine learning forecasts</p>
-                  </div>
-                  <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-                    <span className="material-symbols-outlined text-orange-500 text-3xl">
-                      satellite_alt
-                    </span>
-                    <h3 className="font-semibold mt-2">Data Integration</h3>
-                    <p className="text-sm">Multi-source information</p>
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-3xl">dashboard</span>
+              <h3 className="font-semibold mt-2">Live Dashboard</h3>
+              <p className="text-sm">Comprehensive view of active wildfires</p>
+            </div>
+            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-3xl">warning</span>
+              <h3 className="font-semibold mt-2">Instant Alerts</h3>
+              <p className="text-sm">Real-time notifications</p>
+            </div>
+            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-3xl">psychology</span>
+              <h3 className="font-semibold mt-2">AI Predictions</h3>
+              <p className="text-sm">Machine learning forecasts</p>
+            </div>
+            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-3xl">satellite_alt</span>
+              <h3 className="font-semibold mt-2">Data Integration</h3>
+              <p className="text-sm">Multi-source information</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
