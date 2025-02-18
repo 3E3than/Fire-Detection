@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+class UserLocation(models.Model):
+    email = models.EmailField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+
+    def __str__(self):
+        return f'{self.email} - {self.latitude}, {self.longitude}'
