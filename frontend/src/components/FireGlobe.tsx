@@ -24,7 +24,7 @@ const FireGlobe: React.FC<FireGlobeProps> = ({ fireData }) => {
       pointLabel={(d) => `Fire at ${(d as FireDataItem).lat}, ${(d as FireDataItem).lng}`}
       onPointClick={(point) => console.log('Clicked:', point)}
       pointsMerge={true}
-      backgroundColor="rgba(0, 0, 0, 0)"
+      backgroundColor="rgba(100, 0, 0, 10)"
       width={800}
       height={800}
     />
