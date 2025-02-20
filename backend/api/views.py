@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from .models import *
 from .serializers import *
 
+
 class StoreLocationView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserLocationSerializer(data=request.data)

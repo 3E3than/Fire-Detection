@@ -1,26 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import NotificationSettings from '../components/NotificationSettings';
 
 export const Alert: React.FC = () => {
-	const [isEmailEnabled, setIsEmailEnabled] = useState<boolean>(false);
-	const [email, setEmail] = useState<string>('');
-	const [showEmailInput, setShowEmailInput] = useState<boolean>(false);
-
-	const handleEmailToggle = (): void => {
-		if (!isEmailEnabled) {
-			setShowEmailInput(true);
-		} else {
-			setShowEmailInput(false);
-			setEmail('');
-		}
-		setIsEmailEnabled(!isEmailEnabled);
-	};
-
-	const handleEmailSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-		e.preventDefault();
-		// Here you can handle the email submission, e.g., send it to an API or store it in state
-		console.log('Email submitted:', email);
-		setShowEmailInput(false);
-	};
 
 	return (
 		<>
@@ -58,47 +39,7 @@ export const Alert: React.FC = () => {
 					<section className="grid grid-cols-3 gap-8">
 						<div className="col-span-2 bg-white rounded-lg shadow-md p-6">
 							<h2 className="text-xl font-semibold mb-6">Alert Subscription Settings</h2>
-							<div className="space-y-6">
-								<div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-									<div className="flex items-center space-x-4">
-										<span className="material-symbols-outlined text-blue-500">mail</span>
-										<div>
-											<h3 className="font-medium">Email Notifications</h3>
-											<p className="text-sm text-gray-600">Daily summaries and reports</p>
-										</div>
-									</div>
-									<label className="relative inline-flex items-center cursor-pointer">
-										<input
-											type="checkbox"
-											className="sr-only peer"
-											checked={isEmailEnabled}
-											onChange={handleEmailToggle}
-										/>
-										<div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
-									</label>
-								</div>
-
-								{showEmailInput && (
-									<form onSubmit={handleEmailSubmit} className="mt-4">
-										<div className="flex items-center space-x-4">
-											<input
-												type="email"
-												placeholder="Enter your email"
-												value={email}
-												onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-												className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-												required
-											/>
-											<button
-												type="submit"
-												className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-											>
-												Submit
-											</button>
-										</div>
-									</form>
-								)}
-							</div>
+							<NotificationSettings />
 						</div>
 
 						<div className="space-y-6">
