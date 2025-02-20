@@ -29,7 +29,3 @@ class WildfireView(APIView):
         serializer = WildfireSerializer(wildfires, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-class SendEmailView(APIView):
-    def get(self, request, *args, **kwargs):
-        send_auto_email()
-        return Response({"message": "Email sent successfully!"}, status=status.HTTP_200_OK)

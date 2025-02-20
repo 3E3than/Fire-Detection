@@ -1,7 +1,15 @@
-xdata = [[1, 2, 3]]
-loadedModel = joblib.load("models/random_forest_model.joblib")
-loadedScaler = joblib.load("models/scaler.joblib")
-scaledX = loadedScaler.transform(xdata)
-prediction = loadedModel.predict(scaledX)
-print("TEST PREDICTION")
-print(prediction)
+import joblib
+
+# Load model and scaler
+def load_model():
+    loadedModel = joblib.load("ai/models/random_forest_model.joblib")
+    loadedScaler = joblib.load("ai/models/scaler.joblib")
+    return loadedModel, loadedScaler
+
+def predict(data):
+    xdata = [data]
+    loadedModel, loadedScaler = load_model()
+    scaledX = loadedScaler.transform(xdata)
+    prediction = loadedModel.predict(scaledX)
+    return prediction
+
