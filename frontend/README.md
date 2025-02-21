@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# IgnisAI Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend of **IgnisAI** is built using **React (Vite + TypeScript)** to provide an interactive and user-friendly dashboard for real-time wildfire monitoring.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-Time Wildfire Data**: Displays detected wildfire events with severity levels.
+- **User Subscription**: Allows users to subscribe to notifications based on location.
+- **Dashboard Analytics**: Visualizes wildfire trends, history, and predictions.
+- **API Integration**: Fetches predictions and logs from the Django backend.
+- **Scalable UI**: Designed for future improvements, including live maps and more.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend Framework**: React, Vite, TypeScript
+- **State Management**: React Context API (planned integration with Zustand/TanStack Query)
+- **Styling**: Tailwind CSS
+- **API Communication**: Fetch API (planned migration to TanStack Query for better data fetching)
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Clone the Repository**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  ```sh
+  git clone https://github.com/Puspa222/Fire-Detection.git
+  ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. **Navigate to the Frontend Folder**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  ```sh
+  cd frontend
+  ```
+
+3. **Install Dependencies**
+
+  ```sh
+  npm install
+  ```
+
+4. **Run the Development Server**
+
+  ```sh
+  npm run dev
+  ```
+
+5. **Access the Web App**
+
+  Open your browser and go to [http://localhost:5173](http://localhost:5173)
+
+## Future Updates
+
+- User Account System
+- Customizable Alerts & Preferences
+- Integration with IoT and Cloud-Based Dashboards
