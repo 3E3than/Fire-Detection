@@ -54,7 +54,7 @@ The backend of **IgnisAI** is built using **Django** and **Django REST Framework
 
 | Endpoint               | Method | Description                                    |
 |------------------------|--------|------------------------------------------------|
-| `/predict/`            | POST   | Run wildfire prediction and system evaluation.|
+| `/predict/`            | GET   | Run wildfire prediction and system evaluation.|
 | `/api/store-location/` | POST   | Allows users to subscribe for notifications.   |
 | `/api/wildfire/`       | GET    | Retrieves real-time wildfire data.             |
 
