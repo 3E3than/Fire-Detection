@@ -28,3 +28,12 @@ class Wildfire(models.Model):
 
     def __str__(self):
         return f"Wildfire at {self.location} - {self.status} - {self.radius}m radius"
+
+from django.db import models
+
+class Location(models.Model):
+    city = models.CharField(max_length=100, unique=True)
+    country_code = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f"{self.city}, {self.country_code}"

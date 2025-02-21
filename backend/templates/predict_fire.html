@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>Wildfire Prediction Logs</title>
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary-color: #e53935;
+                --secondary-color: #ffebee;
+                --bg-gradient: linear-gradient(to right, #ffcccc, #ffe6e6);
+                --text-color: #333;
+            }
+            body {
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+                background: var(--bg-gradient);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            header {
+                width: 100%;
+                padding: 20px;
+                background: var(--primary-color);
+                color: #fff;
+                text-align: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            h1 {
+                margin: 0;
+                font-size: 2em;
+                letter-spacing: 1px;
+            }
+            #logContainer {
+                width: 90%;
+                max-width: 800px;
+                margin: 20px auto;
+                background: var(--secondary-color);
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                max-height: 70vh;
+                overflow-y: auto;
+            }
+            .log {
+                background: #fff;
+                border-left: 5px solid var(--primary-color);
+                padding: 10px 15px;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                font-family: monospace;
+                color: var(--text-color);
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeIn 0.5s forwards;
+            }
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .refresh-btn {
+                background: var(--primary-color);
+                border: none;
+                padding: 10px 20px;
+                color: #fff;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: background 0.3s;
+                margin-bottom: 20px;
+            }
+            .refresh-btn:hover {
+                background: #d32f2f;
+            }
+            /* Responsive adjustments */
+            @media (max-width: 600px) {
+                header {
+                    padding: 15px;
+                }
+                h1 {
+                    font-size: 1.5em;
+                }
+                .refresh-btn {
+                    width: 80%;
+                    margin: 10px auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Wildfire Prediction Logs</h1>
+        </header>
+        
+        <!-- Refresh Button to reconnect event source -->
+        <button class="refresh-btn" onclick="reconnectSource()">Reconnect Logs</button>
+        
+        <div id="logContainer"></div>  <!-- Logs will be added here -->
+
+        <script>
+            let eventSource;
+            const logContainer = document.getElementById('logContainer');
+
+            function startEventSource() {
+                eventSource = new EventSource('/predict-fire/');
+                eventSource.onmessage = function(event) {
+                    const logMessage = document.createElement('div');
+                    logMessage.classList.add('log');
+                    logMessage.textContent = event.data;
+                    logContainer.appendChild(logMessage);
+                    logContainer.scrollTop = logContainer.scrollHeight;
+                };
+
+                eventSource.onerror = function(event) {
+                    console.error("Error with EventSource:", event);
+                    eventSource.close();
+                };
+            }
+
+            function reconnectSource() {
+                if (eventSource) eventSource.close();
+                logContainer.innerHTML += '<div class="log" style="animation-delay:0s;">Reconnecting...</div>';
+                startEventSource();
+            }
+            
+            startEventSource();
+        </script>
+    </body>
+</html>

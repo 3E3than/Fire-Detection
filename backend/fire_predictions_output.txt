@@ -1,0 +1,29 @@
+Location: New York, US, Prediction: no_fire, Confidence: 1.0
+Location: Los Angeles, US, Prediction: fire, Confidence: 0.625
+Location: Houston, US, Prediction: no_fire, Confidence: 0.57
+Location: Phoenix, US, Prediction: no_fire, Confidence: 0.64
+Location: Philadelphia, US, Prediction: no_fire, Confidence: 0.995
+Location: San Antonio, US, Prediction: no_fire, Confidence: 0.8
+Location: San Diego, US, Prediction: no_fire, Confidence: 0.835
+Location: Dallas, US, Prediction: no_fire, Confidence: 0.865
+Location: San Jose, US, Prediction: no_fire, Confidence: 0.985
+Location: Austin, US, Prediction: no_fire, Confidence: 0.79
+Location: Jacksonville, US, Prediction: no_fire, Confidence: 0.765
+Location: Fort Worth, US, Prediction: no_fire, Confidence: 0.73
+Location: Columbus, US, Prediction: no_fire, Confidence: 1.0
+Location: Charlotte, US, Prediction: no_fire, Confidence: 0.99
+Location: San Francisco, US, Prediction: no_fire, Confidence: 0.965
+Location: Indianapolis, US, Prediction: no_fire, Confidence: 0.995
+Location: Seattle, US, Prediction: no_fire, Confidence: 0.99
+Location: Denver, US, Prediction: no_fire, Confidence: 0.99
+Location: Washington, US, Prediction: no_fire, Confidence: 1.0
+Location: Boston, US, Prediction: no_fire, Confidence: 1.0
+Location: El Paso, US, Prediction: no_fire, Confidence: 0.655
+Location: Nashville, US, Prediction: no_fire, Confidence: 1.0
+Location: Detroit, US, Prediction: no_fire, Confidence: 0.995
+Location: Oklahoma City, US, Prediction: no_fire, Confidence: 0.995
+Location: Portland, US, Prediction: no_fire, Confidence: 0.995
+Location: Las Vegas, US, Prediction: no_fire, Confidence: 0.595
+Location: Memphis, US, Prediction: no_fire, Confidence: 0.97
+Location: Louisville, US, Prediction: no_fire, Confidence: 0.995
+Location: Baltimore, US, Prediction: no_fire, Confidence: 0.99

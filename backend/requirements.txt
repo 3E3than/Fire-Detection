@@ -5,3 +5,9 @@ pandas
 numpy
 scikit-learn
 joblib
+ee
+geopy
+windows-curses
+earthengine-api
+celery
+redis
