@@ -38,13 +38,34 @@ The backend of **IgnisAI** is built using **Django** and **Django REST Framework
     pip install -r requirements.txt
     ```
 
-4. **Apply Migrations**
+4. **Google Eaarth Engine Setup**
+
+Replace project name in *backend/ai/app.py* at line 22
+
+```sh
+ee.Initialize(project='ee-yourprojectid')
+```
+
+5. **Setup email credentials**
+
+In file *backend/backend/email_cred_example.py*
+rename this file with *email_cred.py*
+keep your credentials here
+
+```sh
+EMAIL_HOST_USER = "Your email address"
+EMAIL_HOST_PASSWORD = "Your email password" #generate an app password 
+
+```
+
+6. **Apply Migrations**
 
     ```sh
+    python manage.py makemigrations
     python manage.py migrate
     ```
 
-5. **Start the Server**
+7. **Start the Server**
 
     ```sh
     python manage.py runserver
