@@ -21,17 +21,16 @@ class StoreLocationView(APIView):
 # WildfireView to handle storing wildfire data and retrieving existing data
 class WildfireView(APIView):
     def post(self, request, *args, **kwargs):
-        serializer = WildfireSerializer(data=request.data)
+        if isinstance(request.data, list):  # Handle bulk insert
+            serializer = WildfireSerializer(data=request.data, many=True)
+        else:
+            serializer = WildfireSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Wildfire data saved successfully!"}, status=status.HTTP_201_CREATED)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    def get(self, request, *args, **kwargs):
-        wildfires = Wildfire.objects.all()
-        serializer = WildfireSerializer(wildfires, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 # LocationView to handle storing and retrieving locations
 class LocationView(APIView):
@@ -49,23 +48,46 @@ from ai.app import get_fire_predictions
 # This view will handle the streaming of logs
 def predict_fire(request):
     try:
-        # Fetch all locations from the database
         locations = Location.objects.all()
 
-        # Create a generator to stream logs
         def log_generator():
             yield "Starting fire prediction process...\n"
             results = get_fire_predictions(locations)
+
             for result in results:
                 city_country = result[0]
                 prediction = result[1]
                 confidence = result[2]
+
                 yield f"Processed {city_country}: Prediction = {prediction}, Confidence = {confidence}\n"
+
+                # Check if wildfire exists at this location
+                wildfire = Wildfire.objects.filter(location=city_country).first()
+
+                if prediction == "fire":
+                    if wildfire:
+                        wildfire.status = Wildfire.ONGOING
+                        wildfire.save()
+                        yield f"Updated wildfire status at {city_country} to Ongoing.\n"
+                    else:
+                        Wildfire.objects.create(
+                            location=city_country,
+                            latitude=0.0,  # Replace with actual latitude
+                            longitude=0.0, # Replace with actual longitude
+                            radius=10000,  # Default radius in meters (adjustable)
+                            status=Wildfire.ONGOING
+                        )
+                        yield f"New wildfire recorded at {city_country}.\n"
+                else:
+                    if wildfire:
+                        wildfire.status = Wildfire.INACTIVE
+                        wildfire.save()
+                        yield f"Updated wildfire status at {city_country} to Inactive.\n"
+
             yield "Fire prediction process completed.\n"
 
-        # Return the streaming response to the frontend
         return StreamingHttpResponse(log_generator(), content_type='text/plain')
-    
+
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
 
