@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
 
 interface FireDataItem {
@@ -13,8 +13,19 @@ interface FireGlobeProps {
 }
 
 const FireGlobe: React.FC<FireGlobeProps> = ({ fireData }) => {
+  const globeEl = useRef<any>();
+
+  useEffect(() => {
+    const globe = globeEl.current;
+    if (globe) {
+      globe.controls().autoRotate = true;
+      globe.controls().autoRotateSpeed = 3; // Adjust the speed as needed
+    }
+  }, []);
+
   return (
     <Globe
+      ref={globeEl}
       globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
       pointsData={fireData}
       pointColor={(d) => (d as FireDataItem).color || 'red'} // Use 'red' as fallback
@@ -27,7 +38,6 @@ const FireGlobe: React.FC<FireGlobeProps> = ({ fireData }) => {
       backgroundColor="rgba(0, 0, 0, 0)"
       width={800}
       height={800}
- 
     />
   );
 };
