@@ -20,6 +20,10 @@ class StoreLocationView(APIView):
 
 # WildfireView to handle storing wildfire data and retrieving existing data
 class WildfireView(APIView):
+    def get(self, request, *args, **kwargs):
+        wildfires = Wildfire.objects.all()
+        wildfires_data = [{'location': wildfire.location, 'status': wildfire.status} for wildfire in wildfires]
+        return Response(wildfires_data, status=status.HTTP_200_OK)
     def post(self, request, *args, **kwargs):
         if isinstance(request.data, list):  # Handle bulk insert
             serializer = WildfireSerializer(data=request.data, many=True)
