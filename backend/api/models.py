@@ -4,6 +4,7 @@ class UserLocation(models.Model):
     email = models.EmailField()
     latitude = models.FloatField()
     longitude = models.FloatField()
+    last_email_sent = models.DateTimeField(null=True, blank=True) 
 
     def __str__(self):
         return f'{self.email} - {self.latitude}, {self.longitude}'

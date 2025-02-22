@@ -44,8 +44,10 @@ from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from .models import Location
 from ai.app import get_fire_predictions
+from .utils import send_auto_email
+from .models import UserLocation, Wildfire
 
-# This view will handle the streaming of logs
+# Modified predict_fire view to send email to users near the wildfire location
 def predict_fire(request):
     try:
         locations = Location.objects.all()
@@ -78,6 +80,19 @@ def predict_fire(request):
                             status=Wildfire.ONGOING
                         )
                         yield f"New wildfire recorded at {city_country}.\n"
+
+                    # Send email to users near the wildfire location
+                    user_locations = UserLocation.objects.filter(
+                        latitude__gte=wildfire.latitude - 3, 
+                        latitude__lte=wildfire.latitude + 3,
+                        longitude__gte=wildfire.longitude - 3, 
+                        longitude__lte=wildfire.longitude + 3,
+                    )
+                    
+                    for user in user_locations:
+                        yield f"Sending email to {user.email} for location {city_country}\n"
+                        send_auto_email(user, city_country, prediction, confidence)
+
                 else:
                     if wildfire:
                         wildfire.status = Wildfire.INACTIVE

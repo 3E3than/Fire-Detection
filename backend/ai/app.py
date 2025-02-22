@@ -5,6 +5,7 @@ from geopy.geocoders import Nominatim
 from datetime import date, timedelta
 import logging
 from typing import Optional, Tuple, List, Dict, Any
+from functools import lru_cache
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -14,23 +15,18 @@ NDVI_SCALE = 250
 LST_SCALE = 1000
 BURNED_AREA_SCALE = 1000
 
-def authenticate_gee() -> None:
-    """Authenticate and initialize Google Earth Engine."""
-    try:
-        logging.info("Authenticating Google Earth Engine...")
-        ee.Authenticate()
-        ee.Initialize(project='ee-ignisai')
-        logging.info("Google Earth Engine initialized.")
-    except Exception as e:
-        logging.error("Failed to authenticate Earth Engine: %s", e)
-        raise
+# Initialize geolocator and model/scaler cache
+geolocator = Nominatim(user_agent="geo_bounds_finder")
+_model = None
+_scaler = None
 
+# Caching bounding box to avoid multiple API calls for the same city
+@lru_cache(maxsize=100)  # Cache for 100 locations
 def get_city_bounds(city_name: str, country_code: Optional[str] = None) -> Optional[Dict[str, float]]:
     """Retrieve the bounding box coordinates of a city."""
     try:
         query = f"{city_name}, {country_code}" if country_code else city_name
         logging.info("Fetching bounds for %s", query)
-        geolocator = Nominatim(user_agent="geo_bounds_finder")
         location = geolocator.geocode(query, exactly_one=True)
         
         if location and "boundingbox" in location.raw:
@@ -47,6 +43,17 @@ def get_city_bounds(city_name: str, country_code: Optional[str] = None) -> Optio
     except Exception as e:
         logging.error("Error in get_city_bounds: %s", e)
         return None
+
+def authenticate_gee() -> None:
+    """Authenticate and initialize Google Earth Engine."""
+    try:
+        logging.info("Authenticating Google Earth Engine...")
+        ee.Authenticate()
+        ee.Initialize(project='ee-ignisai')
+        logging.info("Google Earth Engine initialized.")
+    except Exception as e:
+        logging.error("Failed to authenticate Earth Engine: %s", e)
+        raise
 
 def fetch_satellite_data(city: str, country_code: str) -> Tuple[Optional[List[float]], Optional[str]]:
     """Fetch NDVI, LST, and Burned Area data from Google Earth Engine."""
@@ -129,13 +136,15 @@ def fetch_satellite_data(city: str, country_code: str) -> Tuple[Optional[List[fl
         return None, "Error in fetching satellite data"
 
 def load_model() -> Tuple[Any, Any]:
-    """Load the trained model and scaler."""
+    """Load the trained model and scaler if not already loaded."""
+    global _model, _scaler
     try:
-        logging.info("Loading model and scaler...")
-        model = joblib.load("ai/models/random_forest_model.joblib")
-        scaler = joblib.load("ai/models/scaler.joblib")
-        logging.info("Model and scaler loaded.")
-        return model, scaler
+        if _model is None or _scaler is None:
+            logging.info("Loading model and scaler...")
+            _model = joblib.load("ai/models/random_forest_model.joblib")
+            _scaler = joblib.load("ai/models/scaler.joblib")
+            logging.info("Model and scaler loaded.")
+        return _model, _scaler
     except Exception as e:
         logging.error("Error loading model and scaler: %s", e)
         raise
