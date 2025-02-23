@@ -134,7 +134,7 @@ export const About = () => {
 								<a href="https://www.linkedin.com/in/bhavya-jha-52461b250/" target="_blank" rel="noopener noreferrer">
 									<span className="material-symbols-outlined text-orange-500 hover:text-orange-600">link</span>
 								</a>
-								<a href="https://github.com/amrit" target="_blank" rel="noopener noreferrer">
+								<a href="https://github.com/04bhavyaa" target="_blank" rel="noopener noreferrer">
 									<span className="material-symbols-outlined text-orange-500 hover:text-orange-600">code</span>
 								</a>
 							</div>

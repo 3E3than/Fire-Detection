@@ -1,0 +1,27 @@
+2025-02-23 15:07:50,968 - INFO - Starting fire prediction process...
+2025-02-23 15:07:50,968 - INFO - Authenticating Google Earth Engine...
+2025-02-23 15:08:08,324 - INFO - Google Earth Engine initialized.
+2025-02-23 15:08:08,324 - INFO - Processing location: San Francisco, US
+2025-02-23 15:08:08,325 - INFO - Fetching satellite data for San Francisco, US...
+2025-02-23 15:08:08,325 - INFO - Fetching bounds for San Francisco, US
+2025-02-23 15:08:10,324 - INFO - Bounds obtained: (37.6403143, 37.929811, -123.173825, -122.281479)
+2025-02-23 15:08:10,325 - INFO - Time period - Today: 2025-02-22, PrevWeek: 2025-02-08, PrevMonth: 2025-01-08
+2025-02-23 15:08:10,326 - INFO - Defined city area from bounding box.
+2025-02-23 15:08:10,328 - INFO - Fetched and normalized NDVI dataset.
+2025-02-23 15:08:10,328 - INFO - Fetched LST dataset.
+2025-02-23 15:08:10,329 - INFO - Fetched Burned Area dataset.
+2025-02-23 15:08:10,330 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-02-23 15:08:12,050 - INFO - Computed means - NDVI: 0.4247240564636009, LST: 14179.867583338942, Burned Area: 3.4625674262809496
+2025-02-23 15:08:12,050 - INFO - Predicting wildfire risk...
+2025-02-23 15:08:12,050 - INFO - Loading model and scaler...
+2025-02-23 15:08:14,060 - INFO - Model and scaler loaded.
+2025-02-23 15:08:14,198 - INFO - Prediction: no_fire, Probability: 0.975
+2025-02-23 15:08:14,198 - INFO - Result for San Francisco, US: Prediction = no_fire, Confidence = 0.975
+2025-02-23 15:08:14,198 - INFO - Processing location: NonexistentCity, XX
+2025-02-23 15:08:14,198 - INFO - Fetching satellite data for NonexistentCity, XX...
+2025-02-23 15:08:14,198 - INFO - Fetching bounds for NonexistentCity, XX
+2025-02-23 15:08:14,436 - ERROR - City coordinates not found for query: NonexistentCity, XX
+2025-02-23 15:08:14,436 - ERROR - Error for NonexistentCity, XX: City coordinates not found
+2025-02-23 15:08:14,436 - INFO - Fire prediction process completed.
+2025-02-23 15:08:14,436 - INFO - ['San Francisco, US', 'no_fire', np.float64(0.975)]
+2025-02-23 15:08:14,452 - INFO - ['NonexistentCity, XX', 'Error', 'City coordinates not found']
