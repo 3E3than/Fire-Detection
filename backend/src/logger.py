@@ -23,7 +23,7 @@ def setup_logger(log_dir='logs'):
     
     # Generate filename with current date and time
     current_time = datetime.now().strftime('%Y%m%d_%H%M%S')
-    log_filename = os.path.join(log_dir, f'log_{current_time}.txt')
+    log_filename = os.path.join(log_dir, f'log_{current_time}.log')
     
     # Create file handler
     file_handler = logging.FileHandler(log_filename)
