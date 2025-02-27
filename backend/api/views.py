@@ -50,9 +50,72 @@ from .models import Location
 from ai.app import get_fire_predictions
 from .utils import send_auto_email
 from .models import UserLocation, Wildfire
+import threading
+import time
 
 # Modified predict_fire view to send email to users near the wildfire location
 def predict_fire(request):
+    return run_predict_fire()
+
+# Background task scheduler for periodic fire prediction
+def schedule_fire_predictions():
+    
+    def prediction_task():
+        while True:
+            try:
+                print("Running wildfire prediction...")
+                # Get all locations and run predictions
+                locations = Location.objects.all()
+                results = get_fire_predictions(locations)
+                
+                for result in results:
+                    city_country, prediction, confidence = result
+                    
+                    # Check if wildfire exists at this location
+                    wildfire = Wildfire.objects.filter(location=city_country).first()
+                    
+                    if prediction == "fire":
+                        if wildfire:
+                            wildfire.status = Wildfire.ONGOING
+                            wildfire.save()
+                        else:
+                            Wildfire.objects.create(
+                                location=city_country,
+                                latitude=0.0,  # Replace with actual values
+                                longitude=0.0,
+                                radius=10000,
+                                status=Wildfire.ONGOING
+                            )
+                        
+                        # Send email to users near the wildfire location
+                        user_locations = UserLocation.objects.filter(
+                            latitude__gte=wildfire.latitude - 3, 
+                            latitude__lte=wildfire.latitude + 3,
+                            longitude__gte=wildfire.longitude - 3, 
+                            longitude__lte=wildfire.longitude + 3,
+                        )
+                        
+                        for user in user_locations:
+                            send_auto_email(user, city_country, prediction, confidence)
+                    
+                    elif wildfire:
+                        wildfire.status = Wildfire.INACTIVE
+                        wildfire.save()
+                
+                print("Prediction completed. Waiting for 10 minutes before running again...")
+                time.sleep(600)  # Wait for 10 minutes (600 seconds)
+            except Exception as e:
+                print(f"Error in prediction task: {str(e)}")
+                time.sleep(60)  # Wait a minute before retrying
+    
+    # Start the prediction task in a separate thread
+    thread = threading.Thread(target=prediction_task, daemon=True)
+    thread.start()
+
+# Start the scheduler when Django loads
+schedule_fire_predictions()
+
+def run_predict_fire():
     try:
         locations = Location.objects.all()
 
