@@ -1,5 +1,6 @@
 
 import FireMap from "../components/FireMap"
+import { Alert } from "./Alert";
 import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
@@ -122,20 +123,14 @@ export const Dashboard = () => {
 									</span>
 									<span className='material-symbols-outlined'>arrow_forward</span>
 								</button>
-								<button className='w-full p-3 bg-orange-100 hover:bg-orange-200 text-orange-700 rounded-lg transition-colors flex items-center justify-between'>
+								<button onClick={() => navigate("/alert")} className='w-full p-3 bg-orange-100 hover:bg-orange-200 text-orange-700 rounded-lg transition-colors flex items-center justify-between'>
 									<span className='flex items-center'>
 										<span className='material-symbols-outlined mr-2'>add_alert</span>
 										Set Alert
 									</span>
 									<span className='material-symbols-outlined'>arrow_forward</span>
 								</button>
-								<button className='w-full p-3 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors flex items-center justify-between'>
-									<span className='flex items-center'>
-										<span className='material-symbols-outlined mr-2'>share</span>
-										Share Location
-									</span>
-									<span className='material-symbols-outlined'>arrow_forward</span>
-								</button>
+								
 							</div>
 						</div>
 					</div>

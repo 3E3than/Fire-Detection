@@ -19,7 +19,7 @@ const FireGlobe: React.FC<FireGlobeProps> = ({ fireData }) => {
     const globe = globeEl.current;
     if (globe) {
       globe.controls().autoRotate = true;
-      globe.controls().autoRotateSpeed = 3; // Adjust the speed as needed
+      globe.controls().autoRotateSpeed = 5; // Adjust the speed as needed
     }
   }, []);
 

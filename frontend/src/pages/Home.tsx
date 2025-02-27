@@ -98,26 +98,65 @@ export const Home = () => {
           </div>
         </main>
         <div className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow ">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-orange-500 text-3xl">dashboard</span>
-              <h3 className="font-semibold mt-2">Live Dashboard</h3>
-              <p className="text-sm">Comprehensive view of active wildfires</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Live Dashboard Card */}
+            <div className="bg-orange-50 p-6 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-4xl mb-4">dashboard</span>
+              <h3 className="font-semibold text-xl mb-2">Live Dashboard</h3>
+              <p className="text-gray-600 mb-4">
+                Access a comprehensive view of active wildfires with real-time updates. Track fire locations,
+                sizes, and statuses on an interactive map.
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-600">
+                <li>Real-time fire tracking</li>
+                <li>Interactive map with filters</li>
+                <li>Historical data analysis</li>
+              </ul>
             </div>
-            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-orange-500 text-3xl">warning</span>
-              <h3 className="font-semibold mt-2">Instant Alerts</h3>
-              <p className="text-sm">Real-time notifications</p>
+
+            {/* Instant Alerts Card */}
+            <div className="bg-orange-50 p-6 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-4xl mb-4">warning</span>
+              <h3 className="font-semibold text-xl mb-2">Instant Alerts</h3>
+              <p className="text-gray-600 mb-4">
+                Receive real-time notifications about new wildfires, status changes, and critical updates
+                directly to your device.
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-600">
+                <li>Customizable alert settings</li>
+                <li>Push notifications and emails</li>
+                <li>Critical event warnings</li>
+              </ul>
             </div>
-            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-orange-500 text-3xl">psychology</span>
-              <h3 className="font-semibold mt-2">AI Predictions</h3>
-              <p className="text-sm">Machine learning forecasts</p>
+
+            {/* AI Predictions Card */}
+            <div className="bg-orange-50 p-6 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-4xl mb-4">psychology</span>
+              <h3 className="font-semibold text-xl mb-2">AI Predictions</h3>
+              <p className="text-gray-600 mb-4">
+                Leverage advanced machine learning models to predict wildfire behavior, spread patterns,
+                and potential impact areas.
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-600">
+                <li>Fire spread simulations</li>
+                <li>Risk assessment tools</li>
+                <li>Scenario planning</li>
+              </ul>
             </div>
-            <div className="bg-orange-50 p-4 rounded-xl hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-orange-500 text-3xl">satellite_alt</span>
-              <h3 className="font-semibold mt-2">Data Integration</h3>
-              <p className="text-sm">Multi-source information</p>
+
+            {/* Data Integration Card */}
+            <div className="bg-orange-50 p-6 rounded-xl hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-orange-500 text-4xl mb-4">satellite_alt</span>
+              <h3 className="font-semibold text-xl mb-2">Data Integration</h3>
+              <p className="text-gray-600 mb-4">
+                Integrate data from multiple sources, including satellites, weather stations, and ground
+                sensors, for a holistic view of wildfire activity.
+              </p>
+              <ul className="list-disc list-inside text-sm text-gray-600">
+                <li>Satellite imagery analysis</li>
+                <li>Weather data integration</li>
+                <li>Ground sensor networks</li>
+              </ul>
             </div>
           </div>
         </div>
