@@ -84,7 +84,7 @@ const FireMap: React.FC = () => {
         <button
           onClick={() => setMapView("standard")}
           className={`px-4 py-2 rounded-lg ${mapView === "standard"
-              ? "bg-blue-500 text-white"
+              ? "bg-orange-500 text-white"
               : "bg-gray-200 text-gray-700"
             }`}
         >
@@ -93,7 +93,7 @@ const FireMap: React.FC = () => {
         <button
           onClick={() => setMapView("satellite")}
           className={`px-4 py-2 rounded-lg ${mapView === "satellite"
-              ? "bg-blue-500 text-white"
+              ? "bg-orange-500 text-white"
               : "bg-gray-200 text-gray-700"
             }`}
         >
