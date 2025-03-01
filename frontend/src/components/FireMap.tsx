@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
+import React, { useEffect, useState, useRef } from "react";
+import { MapContainer, TileLayer, Circle, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import { baseurl } from "../lib/baseurl";
@@ -27,11 +27,23 @@ const getColor = (status: Wildfire["status"]): string => {
   }
 };
 
+// Component to handle map events
+const MapEventHandler = ({ onHover }: { onHover: (lat: number, lng: number) => void }) => {
+  useMapEvents({
+    mousemove: (e) => {
+      onHover(e.latlng.lat, e.latlng.lng);
+    }
+  });
+  return null;
+};
+
 const FireMap: React.FC = () => {
   const [wildfireLocations, setWildfireLocations] = useState<Wildfire[]>([]);
-  const [mapView, setMapView] = useState<"standard" | "satellite">("standard"); // State for map view
-  const [hoveredLocation, setHoveredLocation] = useState<{ lat: number; lng: number } | null>(null); // State for hovered location
-  const [temperature, setTemperature] = useState<string | null>(null); // State for temperature
+  const [mapView, setMapView] = useState<"standard" | "satellite">("standard");
+  const [hoveredLocation, setHoveredLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [temperature, setTemperature] = useState<string | null>(null);
+  const [showTempPopup, setShowTempPopup] = useState(false);
+  const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Fetch wildfire data from API using axios
   useEffect(() => {
@@ -50,32 +62,49 @@ const FireMap: React.FC = () => {
   // Function to fetch temperature for a specific location
   const fetchTemperature = async (lat: number, lng: number) => {
     try {
-      console.log("Fetching temperature for:", lat, lng); // Debugging
-      const response = await axios.get(`${baseurl}/api/weather`, {
-        params: { lat, lng },
+      const response = await axios.get(`https://api.open-meteo.com/v1/forecast`, {
+        params: {
+          latitude: lat,
+          longitude: lng,
+          current_weather: true,
+        },
       });
-      console.log("Temperature response:", response.data); // Debugging
-      setTemperature(response.data.temperature); // Assuming the API returns temperature in the response
+      setTemperature(response.data.current_weather.temperature.toFixed(1));
+      setShowTempPopup(true);
     } catch (error) {
       console.error("Error fetching temperature", error);
+      setTemperature(null);
+      setShowTempPopup(false);
     }
   };
 
-  // Handle hover on a location
-  const handleHover = (lat: number, lng: number) => {
+  // Handle hover on the map
+  const handleMapHover = (lat: number, lng: number) => {
     setHoveredLocation({ lat, lng });
-    setTimeout(() => {
-      if (hoveredLocation?.lat === lat && hoveredLocation?.lng === lng) {
-        fetchTemperature(lat, lng); // Fetch temperature after a delay
-      }
-    }, 2000); // 2 seconds delay
+    
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    
+    hoverTimerRef.current = setTimeout(() => {
+      fetchTemperature(lat, lng);
+    }, 500);
   };
 
-  // Handle mouse leave
-  const handleMouseLeave = () => {
-    setHoveredLocation(null);
-    setTemperature(null);
-  };
+  // Clear temperature popup when location changes significantly
+  useEffect(() => {
+    if (hoveredLocation && showTempPopup) {
+      const handleMouseMove = () => {
+        setShowTempPopup(false);
+      };
+      
+      window.addEventListener('mousemove', handleMouseMove);
+      
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, [showTempPopup, hoveredLocation]);
 
   return (
     <div>
@@ -84,81 +113,100 @@ const FireMap: React.FC = () => {
         <button
           onClick={() => setMapView("standard")}
           className={`px-4 py-2 rounded-lg ${mapView === "standard"
-              ? "bg-orange-500 text-white"
-              : "bg-gray-200 text-gray-700"
-            }`}
+            ? "bg-orange-500 text-white"
+            : "bg-gray-200 text-gray-700"
+          }`}
         >
           Standard View
         </button>
         <button
           onClick={() => setMapView("satellite")}
           className={`px-4 py-2 rounded-lg ${mapView === "satellite"
-              ? "bg-orange-500 text-white"
-              : "bg-gray-200 text-gray-700"
-            }`}
+            ? "bg-orange-500 text-white"
+            : "bg-gray-200 text-gray-700"
+          }`}
         >
           Satellite View
         </button>
         <span> 
-            <LiveMonitoring></LiveMonitoring>
+          <LiveMonitoring></LiveMonitoring>
         </span>
       </div>
 
       {/* Map Container */}
-      <MapContainer
-        key={mapView} // Force re-render when mapView changes
-        style={{ height: "500px", width: "100%" }}
-        zoom={3}
-        center={[20, 0]}
-        scrollWheelZoom={true}
-      >
-        {/* Tile Layer Based on Selected View */}
-        {mapView === "standard" ? (
-          <>
-            {/* OpenStreetMap with Labels */}
+      <div className="relative">
+        <MapContainer
+          key={mapView}
+          style={{ height: "500px", width: "100%" }}
+          zoom={3}
+          center={[20, 0]}
+          scrollWheelZoom={true}
+        >
+          <MapEventHandler onHover={handleMapHover} />
+          
+          {/* Tile Layer Based on Selected View */}
+          {mapView === "standard" ? (
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-          </>
-        ) : (
-          <>
-            {/* Google Satellite with Labels */}
+          ) : (
             <TileLayer
-              url="http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" // Google Satellite with labels
+              url="http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
               maxZoom={20}
               subdomains={["mt0", "mt1", "mt2", "mt3"]}
             />
-          </>
-        )}
+          )}
 
-        {/* Display Wildfire Locations */}
-        {wildfireLocations.map((fire) => (
-          <Circle
-            key={fire.id}
-            center={[fire.latitude, fire.longitude]}
-            radius={fire.radius}
-            color={getColor(fire.status)}
-            fillColor={getColor(fire.status)}
-            fillOpacity={0.5}
-            eventHandlers={{
-              mouseover: () => handleHover(fire.latitude, fire.longitude),
-              mouseout: handleMouseLeave,
+          {/* Display Wildfire Locations */}
+          {wildfireLocations.map((fire) => (
+            <Circle
+              key={fire.id}
+              center={[fire.latitude, fire.longitude]}
+              radius={fire.radius}
+              color={getColor(fire.status)}
+              fillColor={getColor(fire.status)}
+              fillOpacity={0.5}
+            >
+              <Popup>
+                <div className="p-2 rounded-md">
+                  <strong className="text-red-600">🔥 Wildfire Alert</strong>
+                  <div className="mt-1">
+                    <b>Location:</b> {fire.location}
+                  </div>
+                  <div>
+                    <b>Status:</b> <span className={fire.status === "Ongoing" ? "text-red-500" : "text-gray-500"}>{fire.status}</span>
+                  </div>
+                </div>
+              </Popup>
+            </Circle>
+          ))}
+        </MapContainer>
+        
+        {/* Floating temperature display */}
+        {showTempPopup && hoveredLocation && temperature !== null && (
+          <div 
+            className="absolute bg-white rounded-lg shadow-lg p-3 z-[1000] border-2 border-orange-400"
+            style={{
+              top: '20px',
+              right: '20px',
             }}
           >
-            <Popup>
-              <strong>🔥 Wildfire Alert</strong> <br />
-              <b>Location:</b> {fire.location} <br />
-              <b>Status:</b> {fire.status} <br />
-              {temperature && (
-                <>
-                  <b>Temperature:</b> {temperature}°C
-                </>
-              )}
-            </Popup>
-          </Circle>
-        ))}
-      </MapContainer>
+            <div className="flex items-center">
+              <div className="text-orange-500 mr-2 text-xl">
+                {parseInt(temperature) > 30 ? '🔥' : parseInt(temperature) > 20 ? '☀️' : parseInt(temperature) > 10 ? '🌤️' : '❄️'}
+              </div>
+              <div>
+                <div className="text-sm text-gray-500">Current Temperature</div>
+                <div className="text-2xl font-bold">{temperature}°C</div>
+                <div className="text-xs text-gray-400">
+                  at {hoveredLocation.lat.toFixed(3)}, {hoveredLocation.lng.toFixed(3)}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
