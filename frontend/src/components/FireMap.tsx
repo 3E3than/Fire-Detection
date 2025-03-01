@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import { baseurl } from "../lib/baseurl";
+import LiveMonitoring from "./LiveMonitoring";
 
 // Define TypeScript interface for wildfire data
 interface Wildfire {
@@ -98,6 +99,9 @@ const FireMap: React.FC = () => {
         >
           Satellite View
         </button>
+        <span> 
+            <LiveMonitoring></LiveMonitoring>
+        </span>
       </div>
 
       {/* Map Container */}

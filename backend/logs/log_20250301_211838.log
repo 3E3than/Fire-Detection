@@ -1,0 +1,394 @@
+2025-03-01 21:18:38,943 - INFO - Starting fire prediction process...
+2025-03-01 21:18:38,944 - INFO - Authenticating Google Earth Engine...
+2025-03-01 21:18:47,697 - INFO - Google Earth Engine initialized.
+2025-03-01 21:18:47,703 - INFO - Processing location: New York, US
+2025-03-01 21:18:47,704 - INFO - Fetching satellite data for New York, US...
+2025-03-01 21:18:47,705 - INFO - Fetching bounds for New York, US
+2025-03-01 21:18:48,830 - INFO - Bounds obtained: (40.476578, 40.91763, -74.258843, -73.700233)
+2025-03-01 21:18:48,831 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:18:48,833 - INFO - Defined city area from bounding box.
+2025-03-01 21:18:48,838 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:18:48,842 - INFO - Fetched LST dataset.
+2025-03-01 21:18:48,844 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:18:48,845 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:18:54,329 - INFO - Computed means - NDVI: 0.1500700786795572, LST: 13785.374027643395, Burned Area: 4.078786888115593
+2025-03-01 21:18:54,330 - INFO - Predicting wildfire risk...
+2025-03-01 21:18:54,331 - INFO - Loading model and scaler...
+2025-03-01 21:19:01,017 - INFO - Model and scaler loaded.
+2025-03-01 21:19:01,222 - INFO - Prediction: no_fire, Probability: 0.995
+2025-03-01 21:19:01,223 - INFO - Result for New York, US: Prediction = no_fire, Confidence = 0.995
+2025-03-01 21:19:01,223 - INFO - Processing location: Los Angeles, US
+2025-03-01 21:19:01,224 - INFO - Fetching satellite data for Los Angeles, US...
+2025-03-01 21:19:01,225 - INFO - Fetching bounds for Los Angeles, US
+2025-03-01 21:19:02,205 - INFO - Bounds obtained: (33.659541, 34.337306, -118.6681798, -118.1552983)
+2025-03-01 21:19:02,206 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:02,208 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:02,211 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:02,213 - INFO - Fetched LST dataset.
+2025-03-01 21:19:02,215 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:02,216 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:07,433 - INFO - Computed means - NDVI: 0.29801090945058645, LST: 14711.994441083532, Burned Area: 4.3244880161187815
+2025-03-01 21:19:07,434 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:07,610 - INFO - Prediction: no_fire, Probability: 0.585
+2025-03-01 21:19:07,611 - INFO - Result for Los Angeles, US: Prediction = no_fire, Confidence = 0.585
+2025-03-01 21:19:07,611 - INFO - Processing location: Houston, US
+2025-03-01 21:19:07,612 - INFO - Fetching satellite data for Houston, US...
+2025-03-01 21:19:07,613 - INFO - Fetching bounds for Houston, US
+2025-03-01 21:19:07,986 - INFO - Bounds obtained: (29.5370705, 30.1103506, -95.9097419, -95.0120525)
+2025-03-01 21:19:07,987 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:07,988 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:07,991 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:07,992 - INFO - Fetched LST dataset.
+2025-03-01 21:19:07,995 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:07,995 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:13,265 - INFO - Computed means - NDVI: 0.39124654663405, LST: 14323.195886972355, Burned Area: 4.895820910010707
+2025-03-01 21:19:13,266 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:13,420 - INFO - Prediction: no_fire, Probability: 0.64
+2025-03-01 21:19:13,421 - INFO - Result for Houston, US: Prediction = no_fire, Confidence = 0.64
+2025-03-01 21:19:13,421 - INFO - Processing location: Phoenix, US
+2025-03-01 21:19:13,422 - INFO - Fetching satellite data for Phoenix, US...
+2025-03-01 21:19:13,423 - INFO - Fetching bounds for Phoenix, US
+2025-03-01 21:19:13,735 - INFO - Bounds obtained: (33.2903739, 33.9183794, -112.3240289, -111.9255304)
+2025-03-01 21:19:13,736 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:13,736 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:13,738 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:13,739 - INFO - Fetched LST dataset.
+2025-03-01 21:19:13,740 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:13,740 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:18,876 - INFO - Computed means - NDVI: 0.16934841388039687, LST: 14901.55184488169, Burned Area: 4.691328407681994
+2025-03-01 21:19:18,877 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:18,985 - INFO - Prediction: no_fire, Probability: 0.52
+2025-03-01 21:19:18,986 - INFO - Result for Phoenix, US: Prediction = no_fire, Confidence = 0.52
+2025-03-01 21:19:18,987 - INFO - Processing location: Philadelphia, US
+2025-03-01 21:19:18,987 - INFO - Fetching satellite data for Philadelphia, US...
+2025-03-01 21:19:18,987 - INFO - Fetching bounds for Philadelphia, US
+2025-03-01 21:19:19,705 - INFO - Bounds obtained: (39.867005, 40.1379593, -75.2802977, -74.9558314)
+2025-03-01 21:19:19,706 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:19,707 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:19,709 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:19,710 - INFO - Fetched LST dataset.
+2025-03-01 21:19:19,711 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:19,712 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:23,300 - INFO - Computed means - NDVI: 0.23216984343851657, LST: 13893.686055484479, Burned Area: 4.461289218071381
+2025-03-01 21:19:23,302 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:23,494 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:19:23,495 - INFO - Result for Philadelphia, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:19:23,496 - INFO - Processing location: San Antonio, US
+2025-03-01 21:19:23,497 - INFO - Fetching satellite data for San Antonio, US...
+2025-03-01 21:19:23,498 - INFO - Fetching bounds for San Antonio, US
+2025-03-01 21:19:23,763 - INFO - Bounds obtained: (29.1862572, 29.7309623, -98.8131865, -98.2230029)
+2025-03-01 21:19:23,764 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:23,766 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:23,768 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:23,771 - INFO - Fetched LST dataset.
+2025-03-01 21:19:23,773 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:23,774 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:28,159 - INFO - Computed means - NDVI: 0.35681875772818145, LST: 14486.842007868358, Burned Area: 4.804170826662423
+2025-03-01 21:19:28,160 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:28,347 - INFO - Prediction: no_fire, Probability: 0.74
+2025-03-01 21:19:28,348 - INFO - Result for San Antonio, US: Prediction = no_fire, Confidence = 0.74
+2025-03-01 21:19:28,349 - INFO - Processing location: San Diego, US
+2025-03-01 21:19:28,350 - INFO - Fetching satellite data for San Diego, US...
+2025-03-01 21:19:28,351 - INFO - Fetching bounds for San Diego, US
+2025-03-01 21:19:28,662 - INFO - Bounds obtained: (32.5347979, 33.114194, -117.3098161, -116.9057417)
+2025-03-01 21:19:28,663 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:28,664 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:28,666 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:28,668 - INFO - Fetched LST dataset.
+2025-03-01 21:19:28,670 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:28,671 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:33,942 - INFO - Computed means - NDVI: 0.3091370738519192, LST: 14664.665761676853, Burned Area: 4.507940949075142
+2025-03-01 21:19:33,943 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:34,122 - INFO - Prediction: no_fire, Probability: 0.755
+2025-03-01 21:19:34,123 - INFO - Result for San Diego, US: Prediction = no_fire, Confidence = 0.755
+2025-03-01 21:19:34,123 - INFO - Processing location: Dallas, US
+2025-03-01 21:19:34,124 - INFO - Fetching satellite data for Dallas, US...
+2025-03-01 21:19:34,125 - INFO - Fetching bounds for Dallas, US
+2025-03-01 21:19:39,052 - ERROR - Error in get_city_bounds: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=Dallas%2C+US&format=json&limit=1 (Caused by ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)"))
+2025-03-01 21:19:39,054 - ERROR - Error for Dallas, US: City coordinates not found
+2025-03-01 21:19:39,054 - INFO - Processing location: San Jose, US
+2025-03-01 21:19:39,055 - INFO - Fetching satellite data for San Jose, US...
+2025-03-01 21:19:39,056 - INFO - Fetching bounds for San Jose, US
+2025-03-01 21:19:40,202 - INFO - Bounds obtained: (37.1231596, 37.4691477, -122.0460405, -121.5858438)
+2025-03-01 21:19:40,203 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:40,205 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:40,208 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:40,210 - INFO - Fetched LST dataset.
+2025-03-01 21:19:40,211 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:40,212 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:45,738 - INFO - Computed means - NDVI: 0.49958977050565917, LST: 14425.809820066957, Burned Area: 4.840425531914892
+2025-03-01 21:19:45,739 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:45,917 - INFO - Prediction: no_fire, Probability: 0.575
+2025-03-01 21:19:45,918 - INFO - Result for San Jose, US: Prediction = no_fire, Confidence = 0.575
+2025-03-01 21:19:45,918 - INFO - Processing location: Austin, US
+2025-03-01 21:19:45,919 - INFO - Fetching satellite data for Austin, US...
+2025-03-01 21:19:45,919 - INFO - Fetching bounds for Austin, US
+2025-03-01 21:19:46,385 - INFO - Bounds obtained: (30.0985133, 30.5166255, -97.9367663, -97.5605288)
+2025-03-01 21:19:46,386 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:46,387 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:46,390 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:46,392 - INFO - Fetched LST dataset.
+2025-03-01 21:19:46,394 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:46,394 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:49,827 - INFO - Computed means - NDVI: 0.39995393631375936, LST: 14354.055735581207, Burned Area: 4.908299390229197
+2025-03-01 21:19:49,828 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:50,005 - INFO - Prediction: no_fire, Probability: 0.55
+2025-03-01 21:19:50,006 - INFO - Result for Austin, US: Prediction = no_fire, Confidence = 0.55
+2025-03-01 21:19:50,007 - INFO - Processing location: Jacksonville, US
+2025-03-01 21:19:50,008 - INFO - Fetching satellite data for Jacksonville, US...
+2025-03-01 21:19:50,009 - INFO - Fetching bounds for Jacksonville, US
+2025-03-01 21:19:50,613 - INFO - Bounds obtained: (30.103748, 30.5862095, -82.0493895, -81.316712)
+2025-03-01 21:19:50,615 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:50,615 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:50,617 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:50,619 - INFO - Fetched LST dataset.
+2025-03-01 21:19:50,620 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:50,620 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:19:54,128 - INFO - Computed means - NDVI: 0.5413136910585513, LST: 14414.415749122496, Burned Area: 4.543217232143328
+2025-03-01 21:19:54,129 - INFO - Predicting wildfire risk...
+2025-03-01 21:19:54,327 - INFO - Prediction: no_fire, Probability: 0.675
+2025-03-01 21:19:54,328 - INFO - Result for Jacksonville, US: Prediction = no_fire, Confidence = 0.675
+2025-03-01 21:19:54,329 - INFO - Processing location: Fort Worth, US
+2025-03-01 21:19:54,330 - INFO - Fetching satellite data for Fort Worth, US...
+2025-03-01 21:19:54,330 - INFO - Fetching bounds for Fort Worth, US
+2025-03-01 21:19:54,940 - INFO - Bounds obtained: (32.551584, 33.049529, -97.592388, -97.0335808)
+2025-03-01 21:19:54,941 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:19:54,942 - INFO - Defined city area from bounding box.
+2025-03-01 21:19:54,945 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:19:54,946 - INFO - Fetched LST dataset.
+2025-03-01 21:19:54,948 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:19:54,949 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:00,384 - INFO - Computed means - NDVI: 0.3143145474633584, LST: 14282.123771963274, Burned Area: 4.700522735165252
+2025-03-01 21:20:00,385 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:00,572 - INFO - Prediction: no_fire, Probability: 0.86
+2025-03-01 21:20:00,573 - INFO - Result for Fort Worth, US: Prediction = no_fire, Confidence = 0.86
+2025-03-01 21:20:00,574 - INFO - Processing location: Columbus, US
+2025-03-01 21:20:00,575 - INFO - Fetching satellite data for Columbus, US...
+2025-03-01 21:20:00,576 - INFO - Fetching bounds for Columbus, US
+2025-03-01 21:20:00,991 - INFO - Bounds obtained: (39.8086936, 40.1573082, -83.2101797, -82.7713119)
+2025-03-01 21:20:00,992 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:00,993 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:00,995 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:00,996 - INFO - Fetched LST dataset.
+2025-03-01 21:20:00,997 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:00,997 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:05,290 - INFO - Computed means - NDVI: 0.17311021932129453, LST: 13427.929965370906, Burned Area: 4.198467896464816
+2025-03-01 21:20:05,291 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:05,460 - INFO - Prediction: no_fire, Probability: 0.995
+2025-03-01 21:20:05,460 - INFO - Result for Columbus, US: Prediction = no_fire, Confidence = 0.995
+2025-03-01 21:20:05,461 - INFO - Processing location: Charlotte, US
+2025-03-01 21:20:05,461 - INFO - Fetching satellite data for Charlotte, US...
+2025-03-01 21:20:05,461 - INFO - Fetching bounds for Charlotte, US
+2025-03-01 21:20:06,393 - INFO - Bounds obtained: (35.0105195, 35.4002508, -81.0096282, -80.6348755)
+2025-03-01 21:20:06,394 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:06,395 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:06,396 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:06,398 - INFO - Fetched LST dataset.
+2025-03-01 21:20:06,400 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:06,400 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:11,637 - INFO - Computed means - NDVI: 0.4152620714293872, LST: 14130.979729267885, Burned Area: 4.640496885255298
+2025-03-01 21:20:11,638 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:11,848 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:20:11,849 - INFO - Result for Charlotte, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:20:11,850 - INFO - Processing location: San Francisco, US
+2025-03-01 21:20:11,851 - INFO - Fetching satellite data for San Francisco, US...
+2025-03-01 21:20:11,851 - INFO - Fetching bounds for San Francisco, US
+2025-03-01 21:20:12,156 - INFO - Bounds obtained: (37.6403143, 37.929811, -123.173825, -122.281479)
+2025-03-01 21:20:12,157 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:12,157 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:12,159 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:12,161 - INFO - Fetched LST dataset.
+2025-03-01 21:20:12,162 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:12,163 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:15,231 - INFO - Computed means - NDVI: 0.4247240564636009, LST: 14282.081383779314, Burned Area: 3.3901160356407365
+2025-03-01 21:20:15,232 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:15,441 - INFO - Prediction: no_fire, Probability: 0.895
+2025-03-01 21:20:15,441 - INFO - Result for San Francisco, US: Prediction = no_fire, Confidence = 0.895
+2025-03-01 21:20:15,442 - INFO - Processing location: Indianapolis, US
+2025-03-01 21:20:15,443 - INFO - Fetching satellite data for Indianapolis, US...
+2025-03-01 21:20:15,443 - INFO - Fetching bounds for Indianapolis, US
+2025-03-01 21:20:16,328 - INFO - Bounds obtained: (39.6321626, 39.9275253, -86.3281207, -85.9380401)
+2025-03-01 21:20:16,329 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:16,330 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:16,334 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:16,338 - INFO - Fetched LST dataset.
+2025-03-01 21:20:16,340 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:16,341 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:20,334 - INFO - Computed means - NDVI: 0.19638822304209666, LST: 13360.544135409053, Burned Area: 4.196179859237634
+2025-03-01 21:20:20,334 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:20,485 - INFO - Prediction: no_fire, Probability: 0.995
+2025-03-01 21:20:20,485 - INFO - Result for Indianapolis, US: Prediction = no_fire, Confidence = 0.995
+2025-03-01 21:20:20,486 - INFO - Processing location: Seattle, US
+2025-03-01 21:20:20,486 - INFO - Fetching satellite data for Seattle, US...
+2025-03-01 21:20:20,487 - INFO - Fetching bounds for Seattle, US
+2025-03-01 21:20:21,172 - INFO - Bounds obtained: (47.4810022, 47.7341503, -122.459696, -122.224433)
+2025-03-01 21:20:21,173 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:21,174 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:21,177 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:21,179 - INFO - Fetched LST dataset.
+2025-03-01 21:20:21,180 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:21,181 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:25,562 - INFO - Computed means - NDVI: 0.42700163528980567, LST: 13809.592556317335, Burned Area: 3.9475111443276423
+2025-03-01 21:20:25,563 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:25,724 - INFO - Prediction: no_fire, Probability: 0.99
+2025-03-01 21:20:25,725 - INFO - Result for Seattle, US: Prediction = no_fire, Confidence = 0.99
+2025-03-01 21:20:25,725 - INFO - Processing location: Denver, US
+2025-03-01 21:20:25,726 - INFO - Fetching satellite data for Denver, US...
+2025-03-01 21:20:25,727 - INFO - Fetching bounds for Denver, US
+2025-03-01 21:20:30,519 - INFO - Bounds obtained: (39.6143008, 39.9142087, -105.1098845, -104.5996997)
+2025-03-01 21:20:30,520 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:30,521 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:30,523 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:30,525 - INFO - Fetched LST dataset.
+2025-03-01 21:20:30,528 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:30,529 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:33,239 - INFO - Computed means - NDVI: 0.14905126121387688, LST: 13943.510927524054, Burned Area: 4.120695883167043
+2025-03-01 21:20:33,239 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:33,409 - INFO - Prediction: no_fire, Probability: 0.995
+2025-03-01 21:20:33,410 - INFO - Result for Denver, US: Prediction = no_fire, Confidence = 0.995
+2025-03-01 21:20:33,411 - INFO - Processing location: Washington, US
+2025-03-01 21:20:33,411 - INFO - Fetching satellite data for Washington, US...
+2025-03-01 21:20:33,411 - INFO - Fetching bounds for Washington, US
+2025-03-01 21:20:33,715 - INFO - Bounds obtained: (38.7916303, 38.995968, -77.1197949, -76.909366)
+2025-03-01 21:20:33,716 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:33,717 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:33,719 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:33,720 - INFO - Fetched LST dataset.
+2025-03-01 21:20:33,721 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:33,721 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:36,949 - INFO - Computed means - NDVI: 0.27230647157592797, LST: 13941.833565651692, Burned Area: 4.503750367971693
+2025-03-01 21:20:36,950 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:37,176 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:20:37,176 - INFO - Result for Washington, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:20:37,178 - INFO - Processing location: Boston, US
+2025-03-01 21:20:37,178 - INFO - Fetching satellite data for Boston, US...
+2025-03-01 21:20:37,179 - INFO - Fetching bounds for Boston, US
+2025-03-01 21:20:37,532 - INFO - Bounds obtained: (42.2279112, 42.3969775, -71.1912442, -70.8044881)
+2025-03-01 21:20:37,533 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:37,535 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:37,540 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:37,542 - INFO - Fetched LST dataset.
+2025-03-01 21:20:37,544 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:37,545 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:40,269 - INFO - Computed means - NDVI: 0.25194310516728186, LST: 13594.304640470938, Burned Area: 3.9710398942202603
+2025-03-01 21:20:40,270 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:40,456 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:20:40,457 - INFO - Result for Boston, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:20:40,457 - INFO - Processing location: El Paso, US
+2025-03-01 21:20:40,458 - INFO - Fetching satellite data for El Paso, US...
+2025-03-01 21:20:40,459 - INFO - Fetching bounds for El Paso, US
+2025-03-01 21:20:40,724 - INFO - Bounds obtained: (31.6222161, 32.001484, -106.6357782, -106.1991528)
+2025-03-01 21:20:40,725 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:40,726 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:40,729 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:40,731 - INFO - Fetched LST dataset.
+2025-03-01 21:20:40,733 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:40,734 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:45,566 - INFO - Computed means - NDVI: 0.1188714903580041, LST: 14622.801121918399, Burned Area: 4.820376577268222
+2025-03-01 21:20:45,567 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:45,775 - INFO - Prediction: no_fire, Probability: 0.695
+2025-03-01 21:20:45,776 - INFO - Result for El Paso, US: Prediction = no_fire, Confidence = 0.695
+2025-03-01 21:20:45,776 - INFO - Processing location: Nashville, US
+2025-03-01 21:20:45,777 - INFO - Fetching satellite data for Nashville, US...
+2025-03-01 21:20:45,778 - INFO - Fetching bounds for Nashville, US
+2025-03-01 21:20:46,291 - INFO - Bounds obtained: (35.967785, 36.405496, -87.054766, -86.515588)
+2025-03-01 21:20:46,291 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:46,293 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:46,295 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:46,297 - INFO - Fetched LST dataset.
+2025-03-01 21:20:46,300 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:46,301 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:48,705 - INFO - Computed means - NDVI: 0.40753042867184186, LST: 13854.426397137335, Burned Area: 4.509410899031498
+2025-03-01 21:20:48,706 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:48,894 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:20:48,896 - INFO - Result for Nashville, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:20:48,896 - INFO - Processing location: Detroit, US
+2025-03-01 21:20:48,897 - INFO - Fetching satellite data for Detroit, US...
+2025-03-01 21:20:48,897 - INFO - Fetching bounds for Detroit, US
+2025-03-01 21:20:49,844 - INFO - Bounds obtained: (42.255192, 42.4503959, -83.287959, -82.9104391)
+2025-03-01 21:20:49,845 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:49,846 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:49,849 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:49,852 - INFO - Fetched LST dataset.
+2025-03-01 21:20:49,854 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:49,855 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:54,353 - INFO - Computed means - NDVI: 0.0974409285212056, LST: 13148.428207972198, Burned Area: 3.9977990488438526
+2025-03-01 21:20:54,354 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:54,458 - INFO - Prediction: no_fire, Probability: 1.0
+2025-03-01 21:20:54,459 - INFO - Result for Detroit, US: Prediction = no_fire, Confidence = 1.0
+2025-03-01 21:20:54,459 - INFO - Processing location: Oklahoma City, US
+2025-03-01 21:20:54,460 - INFO - Fetching satellite data for Oklahoma City, US...
+2025-03-01 21:20:54,460 - INFO - Fetching bounds for Oklahoma City, US
+2025-03-01 21:20:54,923 - INFO - Bounds obtained: (35.290695, 35.6748662, -97.830948, -97.124718)
+2025-03-01 21:20:54,923 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:54,924 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:54,926 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:54,928 - INFO - Fetched LST dataset.
+2025-03-01 21:20:54,929 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:54,929 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:20:57,780 - INFO - Computed means - NDVI: 0.29859367130367137, LST: 14207.253397661385, Burned Area: 4.696697044306032
+2025-03-01 21:20:57,781 - INFO - Predicting wildfire risk...
+2025-03-01 21:20:57,869 - INFO - Prediction: no_fire, Probability: 0.965
+2025-03-01 21:20:57,870 - INFO - Result for Oklahoma City, US: Prediction = no_fire, Confidence = 0.965
+2025-03-01 21:20:57,870 - INFO - Processing location: Portland, US
+2025-03-01 21:20:57,870 - INFO - Fetching satellite data for Portland, US...
+2025-03-01 21:20:57,871 - INFO - Fetching bounds for Portland, US
+2025-03-01 21:20:58,829 - INFO - Bounds obtained: (45.432536, 45.6528812, -122.8367489, -122.4720252)
+2025-03-01 21:20:58,830 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:20:58,831 - INFO - Defined city area from bounding box.
+2025-03-01 21:20:58,834 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:20:58,835 - INFO - Fetched LST dataset.
+2025-03-01 21:20:58,837 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:20:58,837 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:21:00,775 - INFO - Computed means - NDVI: 0.4388982362498887, LST: 13042.178017990775, Burned Area: 4.256530601784508
+2025-03-01 21:21:00,776 - INFO - Predicting wildfire risk...
+2025-03-01 21:21:00,889 - INFO - Prediction: no_fire, Probability: 0.955
+2025-03-01 21:21:00,890 - INFO - Result for Portland, US: Prediction = no_fire, Confidence = 0.955
+2025-03-01 21:21:00,890 - INFO - Processing location: Las Vegas, US
+2025-03-01 21:21:00,891 - INFO - Fetching satellite data for Las Vegas, US...
+2025-03-01 21:21:00,891 - INFO - Fetching bounds for Las Vegas, US
+2025-03-01 21:21:05,092 - INFO - Bounds obtained: (36.129554, 36.3808406, -115.4242845, -115.062066)
+2025-03-01 21:21:05,093 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:21:05,094 - INFO - Defined city area from bounding box.
+2025-03-01 21:21:05,095 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:21:05,097 - INFO - Fetched LST dataset.
+2025-03-01 21:21:05,097 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:21:05,098 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:21:10,415 - INFO - Computed means - NDVI: 0.13462620830187916, LST: 14551.299613778061, Burned Area: 4.976748370781067
+2025-03-01 21:21:10,416 - INFO - Predicting wildfire risk...
+2025-03-01 21:21:10,556 - INFO - Prediction: no_fire, Probability: 0.515
+2025-03-01 21:21:10,557 - INFO - Result for Las Vegas, US: Prediction = no_fire, Confidence = 0.515
+2025-03-01 21:21:10,557 - INFO - Processing location: Memphis, US
+2025-03-01 21:21:10,558 - INFO - Fetching satellite data for Memphis, US...
+2025-03-01 21:21:10,558 - INFO - Fetching bounds for Memphis, US
+2025-03-01 21:21:10,864 - INFO - Bounds obtained: (34.9941528, 35.263879, -90.308366, -89.637089)
+2025-03-01 21:21:10,864 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:21:10,865 - INFO - Defined city area from bounding box.
+2025-03-01 21:21:10,866 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:21:10,867 - INFO - Fetched LST dataset.
+2025-03-01 21:21:10,868 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:21:10,869 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:21:14,588 - INFO - Computed means - NDVI: 0.32527966457158736, LST: 13949.9714309, Burned Area: 4.356362332152272
+2025-03-01 21:21:14,590 - INFO - Predicting wildfire risk...
+2025-03-01 21:21:14,735 - INFO - Prediction: no_fire, Probability: 0.985
+2025-03-01 21:21:14,735 - INFO - Result for Memphis, US: Prediction = no_fire, Confidence = 0.985
+2025-03-01 21:21:14,736 - INFO - Processing location: Louisville, US
+2025-03-01 21:21:14,736 - INFO - Fetching satellite data for Louisville, US...
+2025-03-01 21:21:14,736 - INFO - Fetching bounds for Louisville, US
+2025-03-01 21:21:15,135 - INFO - Bounds obtained: (37.9971, 38.3801391, -85.9470644, -85.4051)
+2025-03-01 21:21:15,136 - INFO - Time period - Today: 2025-02-28, PrevWeek: 2025-02-14, PrevMonth: 2025-01-14
+2025-03-01 21:21:15,138 - INFO - Defined city area from bounding box.
+2025-03-01 21:21:15,140 - INFO - Fetched and normalized NDVI dataset.
+2025-03-01 21:21:15,143 - INFO - Fetched LST dataset.
+2025-03-01 21:21:15,145 - INFO - Fetched Burned Area dataset.
+2025-03-01 21:21:15,145 - INFO - Computing mean values for NDVI, LST, and Burned Area...
+2025-03-01 21:21:18,304 - INFO - Computed means - NDVI: 0.36763893440017853, LST: 13721.55514352721, Burned Area: 4.265564194619929
+2025-03-01 21:21:18,305 - INFO - Predicting wildfire risk...
+2025-03-01 21:21:18,473 - INFO - Prediction: no_fire, Probability: 0.99
+2025-03-01 21:21:18,474 - INFO - Result for Louisville, US: Prediction = no_fire, Confidence = 0.99
+2025-03-01 21:21:18,474 - INFO - Processing location: Baltimore, US
+2025-03-01 21:21:18,475 - INFO - Fetching satellite data for Baltimore, US...
+2025-03-01 21:21:18,475 - INFO - Fetching bounds for Baltimore, US
+2025-03-01 21:21:23,198 - ERROR - Error in get_city_bounds: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=Baltimore%2C+US&format=json&limit=1 (Caused by ReadTimeoutError("HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Read timed out. (read timeout=1)"))
+2025-03-01 21:21:23,198 - ERROR - Error for Baltimore, US: City coordinates not found
+2025-03-01 21:21:23,200 - INFO - Fire prediction process completed.
