@@ -2,7 +2,7 @@ import { Radio } from "lucide-react"; // Import a live broadcast icon
 
 const LiveMonitoring = () => {
     return (
-        <div className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-600 text-white px-4 py-2 rounded-full shadow-lg">
+        <div className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-600 text-white px-4 py-2 rounded-full shadow-lg w-fit">
             {/* Icon for Live Monitoring */}
             <Radio className="h-5 w-5 animate-pulse" />
 
