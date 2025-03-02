@@ -3,7 +3,14 @@
 IgnisAI is a prototype web app for detecting wildfires in real-time and providing rapid notifications. Initially, the detection is focused on US cities, but the system has been designed to easily expand to cover global regions.
 
 ## Problem Statement
-In recent years, wildfires have increased in frequency and intensity, posing severe risks to communities, ecosystems, and economies. Rapid detection and immediate notification are critical for evacuation and disaster response efforts. However, current systems often suffer from delayed alerts and limited geographical coverage. IgnisAI aims to improve early detection by leveraging google earth data, machine learning, and real-time notification mechanisms.
+In recent years, wildfires have increased in frequency and intensity, posing severe risks to communities, ecosystems, and economies. Rapid detection and immediate notification are critical for evacuation and disaster response efforts. However, current systems often suffer from delayed alerts and limited geographical coverage. 
+
+## Solution and Impact
+IgnisAI provides a cutting-edge approach to wildfire detection by combining satellite imagery, machine learning, and real-time notifications to enhance early warning systems. Leveraging Google Earth data and insights from the research paper "Predictive Modeling of Wildfires: A New Dataset and Machine Learning Approach" by Hajar Mousannif and Hassan Al Moatassime, IgnisAI translates advanced data processing techniques into a practical, real-world solution.
+
+By integrating a Random Forest classifier with key environmental indicators such as NDVI (Normalized Difference Vegetation Index), LST (Land Surface Temperature), and Burned Area metrics, IgnisAI enhances wildfire prediction accuracy. Unlike traditional alert systems that often rely on delayed or manual reporting, IgnisAI delivers instant notifications, allowing emergency responders and communities to take swift action.
+
+This system is designed for scalability and adaptability, initially focusing on wildfire detection in major US cities, with the long-term vision of expanding globally. The future roadmap includes IoT integrations, SMS notifications, cloud-based infrastructure, and customizable user alerts, ensuring that IgnisAI remains a powerful tool in disaster prevention and response.
 
 ## Features
 - **Real-Time Wildfire Detection:** Uses a Random Forest classifier to analyze google earth data such as NDVI, LST, and Burned Area.
